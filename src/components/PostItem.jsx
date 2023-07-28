@@ -1,12 +1,12 @@
 import React from 'react';
 
-function PostItem(propsiki) {
+function PostItem(itemProps) {
   return (
       <div className='post'>
         <div className='post__content'>
-        <strong>{propsiki.postprops.id}. {propsiki.postprops.title}</strong>
+        <strong>{itemProps.postprops.id}. {itemProps.postprops.title}</strong>
           <div>
-            {propsiki.postprops.body}
+            {itemProps.postprops.body}
           </div>
         </div>
         <div className='post__btn'>

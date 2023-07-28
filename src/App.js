@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './styles/App.css'
 import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton'
+import MyInput from './components/UI/input/MyInput'
+
 
 function App() {
   const [posts, setPosts] = useState([
@@ -10,16 +12,26 @@ function App() {
     { id: 3, title: 'Javascript 3', body: 'Description' }
   ])
   
+  const [title, setTitle] = useState('')
+
+  const addNewPost = (e) => {
+    e.preventDefault()
+    console.log(title)
+  }
 
   return (
     <div className="App">
       <form>
-        <input type='text' placeholder='Post title'/>
-        <input type='text' placeholder='Post description'/>
-        <MyButton>Create post</MyButton>
+        <MyInput
+          value={title}
+          onChange={e=> setTitle(e.target.value)}
+          type='text'
+          placeholder='Post title' />
+        <MyInput type='text' placeholder='Post description'/>
+        <MyButton onClick={addNewPost}>Create post</MyButton>
       </form>
 
-      <PostList postsList={posts} title='Posts for JS'/>
+      <PostList  title='Posts for JS' postsList={posts}/>
     </div>
   );
 }
